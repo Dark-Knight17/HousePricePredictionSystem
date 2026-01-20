@@ -25,13 +25,7 @@ data/
 data/raw/
 data/processed/
 
-# Saved models
-*.pkl
-*.joblib
-*.h5
-*.pt   # PyTorch
-*.ckpt
-*.sav
+
 
 # VSCode
 .vscode/
