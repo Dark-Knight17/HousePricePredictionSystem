@@ -1,0 +1,66 @@
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Distribution / build
+build/
+dist/
+*.egg-info/
+
+# Raw or processed datasets
+data/
+*.csv
+*.tsv
+*.parquet
+*.h5
+*.npy
+*.npz
+
+# Sometimes you have a subfolder for raw vs processed
+data/raw/
+data/processed/
+
+# Saved models
+*.pkl
+*.joblib
+*.h5
+*.pt   # PyTorch
+*.ckpt
+*.sav
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# Other editors
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+logs/
+
+# Checkpoints (training)
+checkpoints/
+*.ckpt
+
+# Temporary files
+*.tmp
+*.swp
+.DS_Store   # Mac
+Thumbs.db   # Windows
+
+# Config files with secrets
+.env
+*.env
+config.yaml
+config.json
+
+HousePrice_hosted_webGUI_link.txt
