@@ -8,11 +8,36 @@ app = Flask(__name__)
 
 # Load model at startup
 model_path = os.path.join('model', 'house_price_model.pkl')
-if os.path.exists(model_path):
-    model = joblib.load(model_path)
-else:
-    print(f"Error: {model_path} not found. Please run train_model.py first.")
-    model = None
+
+import os
+import subprocess
+
+MODEL_PATH = "model/house_price_model.pkl"
+
+def load_or_train_model():
+    """
+    Ensures a trained model exists and returns the loaded model.
+    Trains the model if it is missing.
+    """
+    if not os.path.exists(MODEL_PATH):
+        print("Model not found. Training model...")
+        try:
+            subprocess.run(
+                [sys.executable, "train_model.py"],
+                check=True
+            )
+        except subprocess.CalledProcessError as e:
+            raise RuntimeError("Model training failed") from e
+
+    if not os.path.exists(MODEL_PATH):
+        raise FileNotFoundError(
+            f"Model was not created at {MODEL_PATH}. Check train_model.py output."
+        )
+
+    return joblib.load(MODEL_PATH)
+
+
+model = load_or_train_model()
 
 @app.route("/", methods=["GET"])
 def index():
